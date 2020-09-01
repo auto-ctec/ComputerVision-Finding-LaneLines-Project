@@ -87,7 +87,8 @@ image which shapes it like an unfinished trapezoid and culminates into the final
 
 
 You can compare this one out of six source images with the different methods to the final result in folder:
-test_images_output/
+[test images](https://github.com/auto-ctec/ComputerVision-Finding-LaneLines-Project/tree/master/test_images_output)
+
 
 ### 1. B) SOLUTION FOR VIDEOS
 
