@@ -40,8 +40,8 @@ back and forth or we use trial and error.
 ### 1. A) SOLUTION FOR IMAGES
 
 To demonstrate this lets have a look a the following picture and how we can work with it as source.
-[image1]: ./test_images_output/solidYellowLeft_original.jpg "Original"
-![alt text][image1]
+
+<img src="test_images_output/solidYellowLeft_original.jpg.png" width="480" alt="Original" />
 
 
 COLOR SELECTION, REGION OF INTEREST and MASKING
@@ -49,8 +49,9 @@ COLOR SELECTION, REGION OF INTEREST and MASKING
 Since the source can be seen as multi-dimensional matrix with of values in a range, that represent 
 brightness and color space,we can select our desired range that will be considered and can identify
 the lanes next to other bright values in the scene. A shape of polygon can be drawn and specifies
-where we want to look at in detail while the rest of the picture is maseked to 0 values.
-Here the yellow solid is in the result like the dashed lane as well.
+where we want to look at in detail while the rest of the picture is maseked to 0 values.Here the 
+yellow solid is in the result like the dashed lane as well.
+
 <img src="test_images_output/solidYellowLeft_color_select.png" width="480" alt="Color Selection" />
 
 
@@ -60,8 +61,8 @@ With the help of some algorithm called Canny we can
 A) reduce the noise in the picture with a Gaussian filter. It will be blurred by that and 
 decrease the amount "false" edges.
 B) identify strong edges by looking for high peaks of value changes - the intensity gradients in this image.
-[image3]: ./test_images_output/solidYellowLeft_edges.jpg "Canny Edges"
-![alt text][image3]
+
+<img src="test_images_output/solidYellowLeft_edges.png" width="480" alt="Canny Edges" />
 
 HOUGH TRANSFORM
 
