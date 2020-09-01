@@ -51,6 +51,7 @@ brightness and color space,we can select our desired range that will be consider
 the lanes next to other bright values in the scene. A shape of polygon can be drawn and specifies
 where we want to look at in detail while the rest of the picture is maseked to 0 values.
 Here the yellow solid is in the result like the dashed lane as well.
+<img src="test_images_output/solidYellowLeft_color_select.png" width="480" alt="Color Selection" />
 [image2]: ./test_images_output/solidYellowLeft_color_select.jpg "Color Selection"
 ![alt text][image2]
 
