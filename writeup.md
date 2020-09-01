@@ -16,6 +16,7 @@ and "SOLUTION FOR VIDEO" while last one depends on three steps:
 2. a function to process (single frames of) a video
 3. read the video, process the frames and create an output file
 
+---
 **Finding Lane Lines on the Road**
 
 Description:
@@ -35,6 +36,7 @@ We achieve this by using some well knwon mathematical technics, some already ava
 that are just feed on data like parameters. And last but not least we do some tweaks by changing values 
 back and forth or we use trial and error.
 
+---
 ### Reflection
 
 ### 1. A) SOLUTION FOR IMAGES
@@ -89,7 +91,7 @@ image which shapes it like an unfinished trapezoid and culminates into the final
 You can compare this one out of six source images with the different methods to the final result in folder:
 [test images](https://github.com/auto-ctec/ComputerVision-Finding-LaneLines-Project/tree/master/test_images_output)
 
-
+---
 ### 1. B) SOLUTION FOR VIDEOS
 
 The same methodologies from single image solution apply here as well. 
@@ -99,10 +101,10 @@ You can watch the three videos in:
 [test videos](https://github.com/auto-ctec/ComputerVision-Finding-LaneLines-Project/tree/master/test_videos_output)
 
 
+
+
+
 ---
-
-
-
 ### 2. Potential shortcomings with current pipeline
 
 
@@ -119,7 +121,7 @@ with about 75 km/h. To fast for the activated autopilot and the following lane d
 almost slipping and leaving the road.
 
 
-
+---
 ### 3. Suggest possible improvements to your pipeline
 
 The parameters that can be tweaked are static, if the solution is used for now.
