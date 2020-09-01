@@ -77,8 +77,9 @@ Furthermore we need to exclude special cases like x1 == x2 which cannot be a lin
 The lane is separated by left and right by defining the center of the image and considering slopes just  for each half
 of the image. The start and endpoint of each curb is the bottom of the image and extends out to a special height in the
 image which shapes it like an unfinished trapezoid and culminates into the final result.
+[//]: # (Image References)
 [image5]: ./test_images_output/solidYellowLeft_result.jpg "Result"
-
+![alt text][image1]
 
 You can compare this one out of six source images with the different methods to the final result in folder:
 test_images_output/
