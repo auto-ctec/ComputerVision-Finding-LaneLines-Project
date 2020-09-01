@@ -93,7 +93,8 @@ test_images_output/
 
 The same methodologies from single image solution apply here as well. 
 The difference is that video is separated e.g. into 600 frames and each frame will be processed
-to find the respective lane. You can watch the three videos in test_images_output/.
+to find the respective lane. Afterwards the frames (with lanes) will be saved as a video again. 
+You can watch the three videos in test_images_output/.
 
 
 ---
