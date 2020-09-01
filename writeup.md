@@ -38,7 +38,7 @@ back and forth or we use trial and error.
 
 ---
 ### Notebook
-[P1.ipynb] (https://github.com/auto-ctec/ComputerVision-Finding-LaneLines-Project/blob/master/P1.ipynb)
+[P1.ipynb](https://github.com/auto-ctec/ComputerVision-Finding-LaneLines-Project/blob/master/P1.ipynb)
 
 ---
 ### Reflection
