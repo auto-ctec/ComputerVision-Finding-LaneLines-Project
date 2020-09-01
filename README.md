@@ -1,56 +1,135 @@
-# **Finding Lane Lines on the Road** 
-[![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
+# **Project 1** 
 
-<img src="examples/laneLines_thirdPass.jpg" width="480" alt="Combined Image" />
+## Finding Lane Lines on the Road
 
-Overview
+### This project contains the scope of work and the desired solutions.
+
 ---
+### Introduction
 
-When we drive, we use our eyes to decide where to go.  The lines on the road that show us where the lanes are act as our constant reference for where to steer the vehicle.  Naturally, one of the first things we would like to do in developing a self-driving car is to automatically detect lane lines using an algorithm.
+**Prerequisite**
+Having jupyter installed be able to run notebook (.ipynb)
+or be able to get content from a specif cell type code
+and run it in python (look for code cells below "SOLUTION FOR IMAGES"
+and "SOLUTION FOR VIDEO" while last one depends on three steps:
+1. import Video and HTML related stuff
+2. a function to process (single frames of) a video
+3. read the video, process the frames and create an output file
 
-In this project you will detect lane lines in images using Python and OpenCV.  OpenCV means "Open-Source Computer Vision", which is a package that has many useful tools for analyzing images.  
-
-To complete the project, two files will be submitted: a file containing project code and a file containing a brief write up explaining your solution. We have included template files to be used both for the [code](https://github.com/udacity/CarND-LaneLines-P1/blob/master/P1.ipynb) and the [writeup](https://github.com/udacity/CarND-LaneLines-P1/blob/master/writeup_template.md).The code file is called P1.ipynb and the writeup template is writeup_template.md 
-
-To meet specifications in the project, take a look at the requirements in the [project rubric](https://review.udacity.com/#!/rubrics/322/view)
-
-
-Creating a Great Writeup
 ---
-For this project, a great writeup should provide a detailed response to the "Reflection" section of the [project rubric](https://review.udacity.com/#!/rubrics/322/view). There are three parts to the reflection:
+**Finding Lane Lines on the Road**
 
-1. Describe the pipeline
+Description:
+!Each code cell from the solutions has extended documentation per step, too.!
 
-2. Identify any shortcomings
+When we look at a picture our brain has already developed technics to identify
+a lot of information from it. In general it is trivial for us to see colors, brightness,
+shapes, depth differences, sharp parts, blurry parts - just to name a few.
 
-3. Suggest possible improvements
+A computer with its smallest arbitrable decisions on/off, yes/no or 1/0 must use
+other possiblites to mimic or converge the human processes.
 
-We encourage using images in your writeup to demonstrate how your pipeline works.  
+In one sentence summariezd a computer program needs to differentiate colors, identify where
+strong changes in brightness happens (called edges), limit the area where to look at and
+if a aggregation of points could be an indication of a straight line.
+We achieve this by using some well knwon mathematical technics, some already available code libraries
+that are just feed on data like parameters. And last but not least we do some tweaks by changing values 
+back and forth or we use trial and error.
 
-All that said, please be concise!  We're not looking for you to write a book here: just a brief description.
-
-You're not required to use markdown for your writeup.  If you use another method please just submit a pdf of your writeup. Here is a link to a [writeup template file](https://github.com/udacity/CarND-LaneLines-P1/blob/master/writeup_template.md). 
-
-
-The Project
 ---
+### Notebook
+[P1.ipynb](https://github.com/auto-ctec/ComputerVision-Finding-LaneLines-Project/blob/master/P1.ipynb)
 
-## If you have already installed the [CarND Term1 Starter Kit](https://github.com/udacity/CarND-Term1-Starter-Kit/blob/master/README.md) you should be good to go!   If not, you should install the starter kit to get started on this project. ##
+---
+### Reflection
 
-**Step 1:** Set up the [CarND Term1 Starter Kit](https://github.com/udacity/CarND-Term1-Starter-Kit/blob/master/README.md) if you haven't already.
+### 1. A) SOLUTION FOR IMAGES
 
-**Step 2:** Open the code in a Jupyter Notebook
+To demonstrate this lets have a look a the following picture and how we can work with it as source.
 
-You will complete the project code in a Jupyter notebook.  If you are unfamiliar with Jupyter Notebooks, check out [Udacity's free course on Anaconda and Jupyter Notebooks](https://classroom.udacity.com/courses/ud1111) to get started.
+<img src="test_images_output/solidYellowLeft_original.png" width="480" alt="Original" />
 
-Jupyter is an Ipython notebook where you can run blocks of code and see results interactively.  All the code for this project is contained in a Jupyter notebook. To start Jupyter in your browser, use terminal to navigate to your project directory and then run the following command at the terminal prompt (be sure you've activated your Python 3 carnd-term1 environment as described in the [CarND Term1 Starter Kit](https://github.com/udacity/CarND-Term1-Starter-Kit/blob/master/README.md) installation instructions!):
 
-`> jupyter notebook`
+COLOR SELECTION, REGION OF INTEREST and MASKING
 
-A browser window will appear showing the contents of the current directory.  Click on the file called "P1.ipynb".  Another browser window will appear displaying the notebook.  Follow the instructions in the notebook to complete the project.  
+Since the source can be seen as multi-dimensional matrix with of values in a range, that represent 
+brightness and color space,we can select our desired range that will be considered and can identify
+the lanes next to other bright values in the scene. A shape of polygon can be drawn and specifies
+where we want to look at in detail while the rest of the picture is maseked to 0 values.Here the 
+yellow solid is in the result like the dashed lane as well.
 
-**Step 3:** Complete the project and submit both the Ipython notebook and the project writeup
+<img src="test_images_output/solidYellowLeft_color_select.png" width="480" alt="Color Selection" />
 
-## How to write a README
-A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
 
+CANNY EDGES
+
+With the help of some algorithm called Canny we can
+A) reduce the noise in the picture with a Gaussian filter. It will be blurred by that and 
+decrease the amount "false" edges.
+B) identify strong edges by looking for high peaks of value changes - the intensity gradients in this image.
+
+<img src="test_images_output/solidYellowLeft_edges.png" width="480" alt="Canny Edges" />
+
+HOUGH TRANSFORM
+
+In simple words and without explaining the Hough space in detail we can apply this method to see, if lines 
+are strongly pointing into the same direction and just display these line that satisfies the Hough conditions.
+Here a lot tweaking is necessary, because a good result is very parameter depending and can differ 
+from scene to scene. Here the Hough Transform is combined with the source image.
+
+<img src="test_images_output/solidYellowLeft_first_result.png" width="480" alt="First result" />
+
+You can see that the lane is detected, but with one drawback. The dashed line is identified, but it would be better
+to let the computer see the lane in better way like two solid lines. For this improvement is necessary to
+work with the characteristics of linear functions and how to apply these to attempt to display and find a solid lane.
+We need to draw the lines on the line_image separately by looking for a positive and a negative slopes for each curb.
+This is done by linear regression and we define some boundary values to exlcude lines that are out of our interest.
+Furthermore we need to exclude special cases like x1 == x2 which cannot be a linear function and is not usable for us.
+The lane is separated by left and right by defining the center of the image and considering slopes just  for each half
+of the image. The start and endpoint of each curb is the bottom of the image and extends out to a special height in the
+image which shapes it like an unfinished trapezoid and culminates into the final result.
+
+<img src="test_images_output/solidYellowLeft_result.png" width="480" alt="Result" />
+
+
+You can compare this one out of six source images with the different methods to the final result in folder:
+[test images](https://github.com/auto-ctec/ComputerVision-Finding-LaneLines-Project/tree/master/test_images_output)
+
+---
+### 1. B) SOLUTION FOR VIDEOS
+
+The same methodologies from single image solution apply here as well. 
+The difference is that video is separated e.g. into 600 frames and each frame will be processed
+to find the respective lane. Afterwards the frames (with lanes) will be saved as a video again. 
+You can watch the three videos in:
+[test videos](https://github.com/auto-ctec/ComputerVision-Finding-LaneLines-Project/tree/master/test_videos_output)
+
+
+
+
+
+---
+### 2. Potential shortcomings with current pipeline
+
+
+Traffic is very dynamic and there are plenty of (image) situations where the solutions might fall.
+Weather conditions like rain and snow, construction work on the road, brightness issues (like happening
+at first in the challenge video where very bright sections destroyed the lane detection and show hundreds
+of dots beside some existing lines. Driving at night could be ok, if the lines reflect the car lights.
+If the turn is to sharp within the road the line detection might fail. The pocessing of the videos takes
+to much time and might be insufficient for real-time applications. 
+A hill will result in a short amount of time without lane detection. I had this issues once with a Tesla Model S
+in Germany at while driving along a slope at the [google maps position]
+(https://www.google.de/maps/place/16356+Ahrensfelde/@52.5875962,13.5881158,15.65z/data=!4m5!3m4!1s0x47a84b4f1eeb6e1d:0x42120465b637400!8m2!3d52.5817191!4d13.5747926)
+with about 75 km/h. To fast for the activated autopilot and the following lane detection correction with 
+almost slipping and leaving the road.
+
+
+---
+### 3. Suggest possible improvements to your pipeline
+
+The parameters that can be tweaked are static, if the solution is used for now.
+They should be handled more dynamically to react on different conditions. Maybe
+hepler functions could survey the parameters for Canny or Hough and tweak, if some cases.
+The region of interest should be improved. The code cells in general should be separated to have better overview and
+"hide" undesirable blocks of plain data.
