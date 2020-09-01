@@ -41,7 +41,7 @@ back and forth or we use trial and error.
 
 To demonstrate this lets have a look a the following picture and how we can work with it as source.
 
-<img src="test_images_output/solidYellowLeft_original.jpg.png" width="480" alt="Original" />
+<img src="test_images_output/solidYellowLeft_original.png" width="480" alt="Original" />
 
 
 COLOR SELECTION, REGION OF INTEREST and MASKING
@@ -70,8 +70,8 @@ In simple words and without explaining the Hough space in detail we can apply th
 are strongly pointing into the same direction and just display these line that satisfies the Hough conditions.
 Here a lot tweaking is necessary, because a good result is very parameter depending and can differ 
 from scene to scene. Here the Hough Transform is combined with the source image.
-[image4]: ./test_images_output/solidYellowLeft_first_result.jpg "First result"
-![alt text][image4]
+
+<img src="test_images_output/solidYellowLeft_first_result.png" width="480" alt="First result" />
 
 You can see that the lane is detected, but with one drawback. The dashed line is identified, but it would be better
 to let the computer see the lane in better way like two solid lines. For this improvement is necessary to
@@ -83,7 +83,7 @@ The lane is separated by left and right by defining the center of the image and 
 of the image. The start and endpoint of each curb is the bottom of the image and extends out to a special height in the
 image which shapes it like an unfinished trapezoid and culminates into the final result.
 
-[image5]: ./test_images_output/solidYellowLeft_result.png "Result"
+<img src="test_images_output/solidYellowLeft_result.png" width="480" alt="Result" />
 
 
 You can compare this one out of six source images with the different methods to the final result in folder:
