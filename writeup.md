@@ -41,6 +41,7 @@ back and forth or we use trial and error.
 
 To demonstrate this lets have a look a the following picture and how we can work with it as source.
 [image1]: ./test_images_output/solidYellowLeft_original.jpg "Original"
+![alt text][image1]
 
 
 COLOR SELECTION, REGION OF INTEREST and MASKING
@@ -51,6 +52,7 @@ the lanes next to other bright values in the scene. A shape of polygon can be dr
 where we want to look at in detail while the rest of the picture is maseked to 0 values.
 Here the yellow solid is in the result like the dashed lane as well.
 [image2]: ./test_images_output/solidYellowLeft_color_select.jpg "Color Selection"
+![alt text][image2]
 
 CANNY EDGES
 
@@ -59,6 +61,7 @@ A) reduce the noise in the picture with a Gaussian filter. It will be blurred by
 decrease the amount "false" edges.
 B) identify strong edges by looking for high peaks of value changes - the intensity gradients in this image.
 [image3]: ./test_images_output/solidYellowLeft_edges.jpg "Canny Edges"
+![alt text][image3]
 
 HOUGH TRANSFORM
 
@@ -67,6 +70,7 @@ are strongly pointing into the same direction and just display these line that s
 Here a lot tweaking is necessary, because a good result is very parameter depending and can differ 
 from scene to scene. Here the Hough Transform is combined with the source image.
 [image4]: ./test_images_output/solidYellowLeft_first_result.jpg "First result"
+![alt text][image4]
 
 You can see that the lane is detected, but with one drawback. The dashed line is identified, but it would be better
 to let the computer see the lane in better way like two solid lines. For this improvement is necessary to
@@ -79,7 +83,7 @@ of the image. The start and endpoint of each curb is the bottom of the image and
 image which shapes it like an unfinished trapezoid and culminates into the final result.
 [//]: # (Image References)
 [image5]: ./test_images_output/solidYellowLeft_result.jpg "Result"
-![alt text][image1]
+![alt text][image5]
 
 You can compare this one out of six source images with the different methods to the final result in folder:
 test_images_output/
