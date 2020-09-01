@@ -37,6 +37,10 @@ that are just feed on data like parameters. And last but not least we do some tw
 back and forth or we use trial and error.
 
 ---
+### Notebook
+[P1.ipynb] (https://github.com/auto-ctec/ComputerVision-Finding-LaneLines-Project/blob/master/P1.ipynb)
+
+---
 ### Reflection
 
 ### 1. A) SOLUTION FOR IMAGES
